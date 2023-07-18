@@ -6,6 +6,7 @@ import { WebcameraComponent } from './webcamera/webcamera.component';
 import { AuthGuard } from './shared/auth.guard';
 import { RouteGuard } from './shared/route.guard';
 import { CameraAuthGuard } from './shared/camera-auth.guard';
+import { VideoRecordsComponent } from './video-records/video-records.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,9 @@ const routes: Routes = [
   {
     path:'login', component:LoginComponent, 
     canActivate:[RouteGuard]
+  },
+  {
+    path:'view-records',component:VideoRecordsComponent
   }
 ];
 
