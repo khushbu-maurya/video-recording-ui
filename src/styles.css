@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: aliceblue; }
+.material-symbols-outlined {
+    font-size: 160px;
+  }
+
+  .btn-general {
+    width: 175px;
+  }
+
+  mat-sppiner {
+    color: #eee;
+  }
+
+  a {
+    text-decoration: none;
+}
+
+.login-page {
+    width: 100%;
+    height: 100vh;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+}
+
+.form-right i {
+    font-size: 100px;
+}
+
+h3{
+  font-size: 20px !important;
+  font-weight: 500 !important;
+}
+
+label{
+  font-size: 18px;
+}
+
+.form-check-input[type=checkbox] {
+  width: 15px;
+}
+
+.text-danger {
+    margin-left: 5px !important;
+    padding-top: 8px;
+}
+
+.mat-mdc-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: #eee;
+    margin-left: 0.5rem;
+    margin-top: 0.1rem
+}
+.ml-2 {
+    margin-left: 1rem !important;
+}
