@@ -14,13 +14,16 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AuthInterceptor } from './shared/auth.interceptor';
+import { VideoRecordsComponent } from './video-records/video-records.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     GenerateFormComponent,
-    WebcameraComponent
+    WebcameraComponent,
+    VideoRecordsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,12 +33,14 @@ import { AuthInterceptor } from './shared/auth.interceptor';
     BrowserAnimationsModule,
     MatSnackBarModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatToolbarModule
   ],
   providers: [AudioRecordingService,VideoRecordingService,
   {
     provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,multi:true
-  }],
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -45,8 +45,11 @@ export class GenerateFormComponent implements OnInit {
     })
   }
 
+  viewRecording(): void {
+    this.router.navigate(['/view-records']);
+  }
+
   onGenerateLink(): void {
-    
     let postData: GenerateLinkPostModel = GenerateLinkPostModel.mapFromFormModel(this.generateLinkForm.value)
     this.loading = true;
     const baseUrl  = document.location.origin

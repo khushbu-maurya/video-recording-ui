@@ -21,8 +21,9 @@ export class AuthInterceptor implements HttpInterceptor {
     if (token) {
       request = request.clone({
         setHeaders: {
+          'ngrok-skip-browser-warning':'true',
           'Cache-Control': 'no-cache',
-          authToken: `${token}`
+          Authorization: `${token}`
         }
       });
       }
