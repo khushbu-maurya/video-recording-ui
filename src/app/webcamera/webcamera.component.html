@@ -1,0 +1,48 @@
+<!-- <div style="text-align:center">
+    <h1>Welcome to WebCam</h1>
+    <video class="video" #video autoplay controls></video>
+    <span class="m-1"></span>
+    <video class="video" style="width:360 !important;" controls #recordedVideo></video>
+    <br>
+    <button class="btn btn-primary btn-lg" *ngIf="!isRecording" (click)="startRecording()">Start Recording</button>
+    <button class="btn btn-warning btn-lg" *ngIf="isRecording" (click)="stopRecording()">Stop Recording</button>
+  </div> -->
+  <div id="my-app" class="main" >
+    <!-- <div>
+      <div>Audio</div>
+      <div>
+        <button class="start-button" *ngIf="!isAudioRecording && !audioBlobUrl" (click)="startAudioRecording()">Start Audio Recording</button>
+        <button class="stop-button" *ngIf="isAudioRecording && !audioBlobUrl" (click)="stopAudioRecording()">Stop Audio Recording</button>
+        <button class="cancel-button" *ngIf="!isAudioRecording && audioBlobUrl" (click)="clearAudioRecordedData()">Clear Audio Recording</button>
+        <button class="download-button" *ngIf="!isAudioRecording && audioBlobUrl" (click)="downloadAudioRecordedData()">Download Audio Recording</button>
+        <div id="audioTimer" *ngIf="isAudioRecording && !audioBlobUrl"> {{ audioRecordedTime }} </div>
+        <audio *ngIf="!isAudioRecording && audioBlobUrl"  controls>
+          <source [src]="audioBlobUrl" type="audio/mp3">
+        </audio>
+      </div>
+    </div> -->
+    <!-- <div>
+      <div>
+        <button class="start-button" *ngIf="!isVideoRecording && !videoBlobUrl" (click)="startVideoRecording()">Start Video Recording</button>
+        <button class="stop-button" *ngIf="isVideoRecording && !videoBlobUrl" (click)="stopVideoRecording()">Stop Video Recording</button>
+        <button class="cancel-button" *ngIf="!isVideoRecording && videoBlobUrl" (click)="clearVideoRecordedData()">Clear Video Recording</button>
+        <button class="download-button" *ngIf="!isVideoRecording && videoBlobUrl" (click)="downloadVideoRecordedData()">Download Video Recording</button>
+        <div id="videoTimer" *ngIf="isVideoRecording && !videoBlobUrl"> {{ videoRecordedTime }} </div>
+      </div>
+    </div> -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center">
+          <h3>
+            <video #videoElement height="700" width="1000">
+              <source [src]="videoBlobUrl">
+            </video>
+          </h3>
+          <div id="videoTimer" *ngIf="isVideoRecording && !videoBlobUrl"> {{ videoRecordedTime }} </div>
+          <button class="start-button" *ngIf="!isVideoRecording && !videoBlobUrl" (click)="startVideoRecording()">Start Video Recording</button>
+          <button class="cancel-button" *ngIf="!isVideoRecording && videoBlobUrl" (click)="clearVideoRecordedData()">Clear Video Recording</button>
+          <button class="stop-button" *ngIf="isVideoRecording && !videoBlobUrl" (click)="stopVideoRecording()">Stop Video Recording</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -19,9 +19,15 @@ pubspec.lock
 !.devcontainer/recommended-devcontainer.json
 !.devcontainer/recommended-Dockerfile
 .settings/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 .vscode/launch.json
 .vscode/settings.json
 .vscode/tasks.json
+.history/*
 *.swo
 *.swp
 modules/.settings
@@ -57,3 +63,14 @@ baseline.json
 # Husky
 .husky/_
 aio/content/examples/.DS_Store
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+
