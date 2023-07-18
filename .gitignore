@@ -19,9 +19,15 @@ pubspec.lock
 !.devcontainer/recommended-devcontainer.json
 !.devcontainer/recommended-Dockerfile
 .settings/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 .vscode/launch.json
 .vscode/settings.json
 .vscode/tasks.json
+.history/*
 *.swo
 *.swp
 modules/.settings
@@ -66,3 +72,5 @@ aio/content/examples/.DS_Store
 /libpeerconnection.log
 testem.log
 /typings
+
+
