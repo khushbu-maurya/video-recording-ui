@@ -17,14 +17,14 @@
                             <th scope="col">#</th>
                             <th scope="col">Title</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Download Link</th>
+                            <th scope="col">View Recordings</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr *ngFor="let record of recordList;let i = index;">
                             <ng-container>
                               <td>
-                                  1
+                                  {{i+1}}
                               </td>
                               <td>
                                   {{record.title}}
@@ -33,28 +33,10 @@
                                  {{record.email}}
                               </td>
                               <td>
-                                 <a target="_blank" href="record.file">View</a> 
+                                 <a (click)="openView(record.linkid)">View</a> 
                               </td>
                           </ng-container>
                           </tr>
-                          <!-- <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr> -->
                         </tbody>
                       </table>
                 </section>

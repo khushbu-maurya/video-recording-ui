@@ -16,6 +16,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AuthInterceptor } from './shared/auth.interceptor';
 import { VideoRecordsComponent } from './video-records/video-records.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { ViewDialogComponent } from './view-dialog/view-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     LoginComponent,
     GenerateFormComponent,
     WebcameraComponent,
-    VideoRecordsComponent
+    VideoRecordsComponent,
+    ViewDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatSnackBarModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
   ],
   providers: [AudioRecordingService,VideoRecordingService,
   {

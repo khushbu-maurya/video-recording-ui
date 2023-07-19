@@ -10,7 +10,6 @@ export class RouteGuard {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      debugger
       if(localStorage.getItem('authToken') === null){
         return true;
       }else{

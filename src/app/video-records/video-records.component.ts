@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { GeneratelinkService } from '../shared/service/generatelink.service';
 import {take} from 'rxjs';
 import { IFileAPiModel } from '../shared/model/get-file-api-model';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewDialogComponent } from '../view-dialog/view-dialog.component';
 
 @Component({
   selector: 'app-video-records',
@@ -11,7 +13,9 @@ import { IFileAPiModel } from '../shared/model/get-file-api-model';
 export class VideoRecordsComponent implements OnInit{
 
   recordList: IFileAPiModel[] = [];
-  constructor(private generateService: GeneratelinkService){}
+  constructor(
+    private generateService: GeneratelinkService,
+    private dialog:MatDialog){}
 
   ngOnInit(): void {
     this.getPreviuosRecord();
@@ -28,19 +32,33 @@ export class VideoRecordsComponent implements OnInit{
     }) 
   }
 
-  Download(url:string): any {
-    debugger
-  //  const anchor = document.createElement('a');
-  //  anchor.download = url.slice(50);
-  //  anchor.href = url;
-  //  document.body.appendChild(anchor);
-  //  anchor.click();
-  //  document.body.removeChild(anchor);
-  const a = document.createElement('a');
-    document.body.appendChild(a);
-    a.href = url;
-    a.download = url.slice(50);
+  downloadFile() {
+    fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg')
+  .then(res => res.blob()) // Gets the response and returns it as a blob
+  .then(blob => {
+    const a = document.createElement('a')
+    let objectURL = URL.createObjectURL(blob);
+    a.href  = objectURL;
+    a.download = 'dummy';
     a.click();
-    URL.revokeObjectURL(url);
+    URL.revokeObjectURL(objectURL);
+});
+  }
+
+ openView(linkId:string) {
+  console.log(linkId);
+   const dialog = this.dialog.open(ViewDialogComponent, {
+    data:{
+      linkId:linkId
+    },
+    height: 'max-content',
+    width: '600px'
+   })
+
+   dialog.afterClosed().subscribe({
+    next:(res) => {
+        
+    }
+   })
  }
 }

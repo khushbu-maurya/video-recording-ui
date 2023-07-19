@@ -69,3 +69,14 @@
     font-size: 18px;
     width: 136px;
   } */
+
+  .container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+ 
+ .w-60 {
+   width: 50%;
+ }

@@ -10,20 +10,26 @@ import { IGetFilesApiModel } from '../model/get-file-api-model';
 })
 export class GeneratelinkService {
 
+  baseUrl: 'https://75ea-103-250-151-79.ngrok-free.app';
+
   constructor(
     private httpClient:HttpClient
   ) { }
 
   generateLinkApi(postData: GenerateLinkPostModel): Observable<IGenerateLinkApiModel> {
-    return this.httpClient.post<IGenerateLinkApiModel>('https://f3a7-103-250-151-79.ngrok-free.app/api/user/generatelink',postData)
+    return this.httpClient.post<IGenerateLinkApiModel>('http://192.168.0.168:5002/api/user/generatelink',postData)
   }
 
   uploadFIleApi(postData:any, id:string) {
-    return this.httpClient.post(`https://f3a7-103-250-151-79.ngrok-free.app/api/user/upload/${id}`, postData);
+    return this.httpClient.post(`https://75ea-103-250-151-79.ngrok-free.app/api/user/upload/${id}`, postData);
   }
 
   getFilesApi() {
     // return this.httpClient.get<IGetFilesApiModel[]>('https://f3a7-103-250-151-79.ngrok-free.app/api/user/getfile');
-    return this.httpClient.get<IGetFilesApiModel>('https://f3a7-103-250-151-79.ngrok-free.app/api/user/getfile')
+    return this.httpClient.get<IGetFilesApiModel>('https://75ea-103-250-151-79.ngrok-free.app/api/user/getfile')
+  }
+
+  getRecordedFileApi(id:string) {
+     return this.httpClient.get<IGetFilesApiModel>(`https://75ea-103-250-151-79.ngrok-free.app/api/user/getfile?id=${id}`)
   }
 }
