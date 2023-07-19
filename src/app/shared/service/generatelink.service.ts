@@ -21,15 +21,15 @@ export class GeneratelinkService {
   }
 
   uploadFIleApi(postData:any, id:string) {
-    return this.httpClient.post(`https://75ea-103-250-151-79.ngrok-free.app/api/user/upload/${id}`, postData);
+    return this.httpClient.post(`http://192.168.0.168:5002/api/user/upload/${id}`, postData);
   }
 
   getFilesApi() {
     // return this.httpClient.get<IGetFilesApiModel[]>('https://f3a7-103-250-151-79.ngrok-free.app/api/user/getfile');
-    return this.httpClient.get<IGetFilesApiModel>('https://75ea-103-250-151-79.ngrok-free.app/api/user/getfile')
+    return this.httpClient.get<IGetFilesApiModel>('http://192.168.0.168:5002/api/user/getfile')
   }
 
   getRecordedFileApi(id:string) {
-     return this.httpClient.get<IGetFilesApiModel>(`https://75ea-103-250-151-79.ngrok-free.app/api/user/getfile?id=${id}`)
+     return this.httpClient.get<IGetFilesApiModel>(`http://192.168.0.168:5002/api/user/getfile?id=${id}`)
   }
 }

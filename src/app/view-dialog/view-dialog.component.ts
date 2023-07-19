@@ -31,7 +31,7 @@ export class ViewDialogComponent implements OnInit{
   }
 
   downloadFile(url:string) {
-    fetch('https://upload.wikimedia.org/wikipedia/commons/7/77/Delete_key1.jpg')
+    fetch(url)
   .then(res => res.blob()) 
   .then(blob => {
     const a = document.createElement('a')
