@@ -59,7 +59,6 @@ export class WebcameraComponent implements OnInit, AfterViewInit {
       this.videoBlob = data.blob;
       this.videoName = data.title;
       this.videoBlobUrl = this.sanitizer.bypassSecurityTrustUrl(data.url);
-      console.log(this.videoBlobUrl);
       if(!this.isVideoRecording && this.videoBlobUrl){
         this.downloadVideoRecordedData();
       }
@@ -115,9 +114,7 @@ export class WebcameraComponent implements OnInit, AfterViewInit {
       this.isVideoRecording = true;
       this.videoRecordingService.startRecording(this.videoConf)
       .then(stream => {
-        // this.video.src = window.URL.createObjectURL(stream);
         this.video.srcObject = stream;
-        console.log(stream)
         this.video.play();
       })
       .catch(function (err) {

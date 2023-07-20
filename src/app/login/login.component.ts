@@ -45,15 +45,6 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    // if (this.loginForm.valid) {
-    //   if (this.email.value === 'admin@gmail.com' && this.password.value === '123456') {
-    //     localStorage.setItem('token', this.email.value);
-    //     this.snackBar.open("Login Successfully!!!", 'X', { verticalPosition: 'top', horizontalPosition: 'end', duration: 3000 });
-    //     this.router.navigate(['/generate-link']);
-    //   } else {
-    //     this.snackBar.open("Username or Password you entered is wrong!!!", 'X', { verticalPosition: 'top', horizontalPosition: 'end', duration: 3000 });
-    //   }
-    // }
     let postData: LoginPostModel = LoginPostModel.mapFromFormData(this.loginForm.value);
     this.loading = true;
     this.loginService.loginApi(postData).pipe(take(1), finalize(() => this.loading = false)).subscribe(
@@ -63,7 +54,6 @@ export class LoginComponent implements OnInit {
           this.snackBar.open("Login Successfully!!!", 'X', { verticalPosition: 'top', horizontalPosition: 'end', duration: 3000 });
           this.router.navigate(['/generate-link']);
         }, error: (err) => {
-           console.log(err);
            if(err.status == 400){
             this.snackBar.open("Username or Password you entered is wrong!!!", 'X', { verticalPosition: 'top', horizontalPosition: 'end', duration: 3000 });
            }

@@ -37,7 +37,7 @@ export class ViewDialogComponent implements OnInit{
     const a = document.createElement('a')
     let objectURL = URL.createObjectURL(blob);
     a.href  = objectURL;
-    a.download = 'dummy';
+    a.download = url.slice(47,61);
     a.click();
     URL.revokeObjectURL(objectURL);
 });
