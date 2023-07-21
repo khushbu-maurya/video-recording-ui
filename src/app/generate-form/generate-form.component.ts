@@ -60,7 +60,10 @@ export class GenerateFormComponent implements OnInit {
     const baseUrl  = document.location.origin
     if(baseUrl.includes('https://192.168.0.44:9400')){
       this.link = `${baseUrl}/video-recording-app/#/webcamera/`;
-    }else{
+    }else if(baseUrl.includes('https://khushbu-maurya.github.io')){
+      this.link = `${baseUrl}/video-recording-ui/#/webcamera/`;
+    }
+    else{
       this.link = `${baseUrl}/#/webcamera/`;
     }
     postData.link = this.link;
