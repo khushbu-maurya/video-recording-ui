@@ -80,3 +80,7 @@
  .w-60 {
    width: 50%;
  }
+
+ .mr-2 {
+  margin-right: 1rem !important;
+ }

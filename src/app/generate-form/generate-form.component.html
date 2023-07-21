@@ -40,9 +40,9 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-12">
+                  <div class="col-4">
                     <button type="submit" class="btn btn-primary px-4 float-end mt-4 d-flex btn-general"
-                      [disabled]="loading ||  generateLinkForm.invalid" (click)="onGenerateLink()">
+                      [disabled]="loading || generateLinkForm.invalid" (click)="onGenerateLink()">
                       Generate Link
                       <ng-container class="ml-2">
                         <mat-spinner *ngIf="loading" diameter="18">
@@ -50,6 +50,21 @@
                       </ng-container>
                       </button>
                   </div>
+                  <div *ngIf="allowSend && !generateLinkForm.dirty" class="col-4">
+                    <button  class="btn btn-primary px-4 float-end mt-4 d-flex"
+                    [disabled]="isLoading" (click)="onSendLink()"  matTooltip="Send link to Email" matTooltipPosition="above"><i class="mr-2 bi bi-send"></i>
+                    Send
+                    <ng-container class="ml-2">
+                      <mat-spinner *ngIf="isLoading" diameter="18">
+                      </mat-spinner>
+                    </ng-container>
+                    </button>
+                </div>
+                <div *ngIf="allowSend && !generateLinkForm.dirty" class="col-4">
+                  <button  [cdkCopyToClipboard]="url" class="btn btn-primary px-4 float-end mt-4 d-flex" matTooltip="Copy link to clipboard" matTooltipPosition="above" (click)="copied()">
+                  <i class="mr-2 bi bi-clipboard" ></i>Copy
+                  </button>
+              </div>
                 </form>
               </div>
             </div>

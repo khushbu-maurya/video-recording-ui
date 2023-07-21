@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
           this.snackBar.open("Login Successfully!!!", 'X', { verticalPosition: 'top', horizontalPosition: 'end', duration: 3000 });
           this.router.navigate(['/generate-link']);
         }, error: (err) => {
-           if(err.status == 400){
+           if(err.status == 401){
             this.snackBar.open("Username or Password you entered is wrong!!!", 'X', { verticalPosition: 'top', horizontalPosition: 'end', duration: 3000 });
            }
            else {

@@ -18,6 +18,8 @@ import { VideoRecordsComponent } from './video-records/video-records.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ViewDialogComponent } from './view-dialog/view-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     HttpClientModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    ClipboardModule,
+    MatTooltipModule
   ],
   providers: [AudioRecordingService,VideoRecordingService,
   {

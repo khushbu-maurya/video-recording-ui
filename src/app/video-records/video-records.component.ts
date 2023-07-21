@@ -4,6 +4,7 @@ import {take} from 'rxjs';
 import { IFileAPiModel } from '../shared/model/get-file-api-model';
 import { MatDialog } from '@angular/material/dialog';
 import { ViewDialogComponent } from '../view-dialog/view-dialog.component';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-video-records',
@@ -15,6 +16,7 @@ export class VideoRecordsComponent implements OnInit{
   recordList: IFileAPiModel[] = [];
   constructor(
     private generateService: GeneratelinkService,
+    private router:Router,
     private dialog:MatDialog){}
 
   ngOnInit(): void {
@@ -60,5 +62,9 @@ export class VideoRecordsComponent implements OnInit{
         
     }
    })
+ }
+
+ backToDefault() {
+  this.router.navigate(['/'])
  }
 }
