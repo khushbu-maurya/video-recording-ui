@@ -31,16 +31,24 @@ export class ViewDialogComponent implements OnInit{
   }
 
   downloadFile(url:string) {
-    fetch(url)
+  
+    fetch(url, {
+      method: 'GET',
+      // headers: {
+      //   'ngrok-skip-browser-warning':'true',
+      // },
+    })
   .then(res => res.blob()) 
   .then(blob => {
     const a = document.createElement('a')
     let objectURL = URL.createObjectURL(blob);
     a.href  = objectURL;
-    a.download = url.slice(47,61);
+    a.download = url.slice(47,63);
     a.click();
     URL.revokeObjectURL(objectURL);
-});
+  }).catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+  });
   }
 
   getRecordedFile() {

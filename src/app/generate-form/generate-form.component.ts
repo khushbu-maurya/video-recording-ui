@@ -6,6 +6,7 @@ import { GenerateLinkPostModel } from '../shared/model/generatelink-post-model';
 import { finalize, take } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
+import { FilePond, FilePondOptions } from 'filepond';
 
 @Component({
   selector: 'app-generate-form',
@@ -21,6 +22,17 @@ export class GenerateFormComponent implements OnInit {
   url:string;
   linkId:string;
   isLoading:boolean = false;
+  pondOptions: FilePondOptions = {
+    allowMultiple: false,
+    labelIdle: 'Upload Logo here...',
+    credits: false,
+    acceptedFileTypes: [ 'image/*'],
+    labelFileTypeNotAllowed: 'This file type is not allowed.',
+    fileValidateTypeLabelExpectedTypes: '',
+    maxFiles: 15,
+    allowFileTypeValidation: true,
+  }
+  logo:any;
 
   get email(): FormControl {
     return this.generateLinkForm.get('email') as FormControl;
@@ -46,7 +58,8 @@ export class GenerateFormComponent implements OnInit {
   cerateFrom(): void {
     this.generateLinkForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      title: ['', [Validators.required]]
+      title: ['', [Validators.required]],
+      logo: ['']
     })
   }
 
@@ -67,10 +80,18 @@ export class GenerateFormComponent implements OnInit {
       this.link = `${baseUrl}/#/webcamera/`;
     }
     postData.link = this.link;
-    this.generateLinkService.generateLinkApi(postData).pipe(take(1), finalize(() => this.loading = false)).subscribe({
+    const formData: FormData = new FormData();
+    formData.append('email', postData.email);
+    formData.append('title', postData.title);
+    formData.append('link', postData.link);
+    if(this.logo){
+      formData.append('file',this.logo)
+    }
+    this.generateLinkService.generateLinkApi(formData).pipe(take(1), finalize(() => this.loading = false)).subscribe({
       next: (res) => {
           localStorage.setItem('linkId',res.linkid);
           this.generateLinkForm.reset();
+          this.logo = null;
           this.allowSend = true;
           this.url = res.link;
           this.linkId = res.linkid;
@@ -94,5 +115,19 @@ export class GenerateFormComponent implements OnInit {
 
   copied(): void {
     this.snackBar.open("Copied!!!", 'X', { verticalPosition: 'top', horizontalPosition: 'end', duration: 3000 });
+  }
+
+  onFileSelected(event) {
+    this.logo = event.file.file;
+    this.generateLinkForm.patchValue({
+      logo: event.file.file
+    })
+  }
+
+  onRemoveFile() {
+    this.logo = null;
+    this.generateLinkForm.patchValue({
+      logo: []
+    })
   }
 }

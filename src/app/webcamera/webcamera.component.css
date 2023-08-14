@@ -3,6 +3,52 @@
     margin-top: 20px;
 }
 
+.button-ui {
+  z-index: 9999;
+  position: relative;
+  height:85vh;
+}
+
+.video-button{
+  height: fit-content;
+}
+
+/* .container {
+  position: relative;
+  width: 100%; 
+} */
+
+/* .container {
+  position: relative;
+  display: flex;
+  width: 100%; 
+  height: max-content;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* .container .controls {
+  position: absolute;
+  bottom: 0;
+  left: 0; 
+  display: flex;
+  justify-content: space-around;
+  opacity: 0.2;
+  transition: opacity 0.4s;
+} */
+
+
+/* #myVideo .controls{
+  position: absolute;
+  bottom: 0;
+  left: 0; 
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  opacity: 0.2;
+  transition: opacity 0.4s;
+} */
+
 .start-button, .download-button {
     background-color: #0f1110;
     border: none;
@@ -13,6 +59,10 @@
     display: inline-block;
     font-size: 16px;
     margin-bottom: 10px;
+    bottom: 0;
+    position: absolute;
+    width: 300px;
+    cursor: pointer;
   }
 
   .stop-button {
@@ -25,11 +75,14 @@
     display: inline-block;
     font-size: 16px;
     margin-bottom: 10px;
-
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+    cursor: pointer;
   }
 
   .cancel-button {
-    background-color: #af7541; /* Green */
+    background-color: #af7541; 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -38,5 +91,127 @@
     display: inline-block;
     font-size: 16px;
     margin-bottom: 10px;
+    width: 300px;
+    cursor: pointer;
+  }
 
+  .record-time {
+    color: #ccc;
+    margin-right: 5px;
+    background-color: #000;
+    top: 0;
+    position: absolute;
+  }
+
+  .container {
+    position: relative;
+    display: flex;
+    width: max-content;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
+.container .controls {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    opacity: 0.2;
+    transition: opacity 0.4s;
+} */
+
+.container:hover .controls {
+    opacity: 1;
+}
+
+/* .container .controls button {
+    background: transparent;
+    color: #fff;
+    font-weight: bolder;
+    text-shadow: 2px 1px 2px #000;
+    border: none;
+    cursor: pointer;
+} */
+
+/* 
+.container .controls .timeline {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-right: 3px solid #ccc;
+    border-left: 3px solid #ccc;
+} */
+
+/* .container .controls .timeline .bar{
+    background: rgb(1, 1, 65);
+    height: 4px;
+    flex: 1;
+} */
+
+/* .container .controls .timeline .bar .inner{
+    background: #ccc;
+    width: 0%;
+    height: 100%;
+} */
+
+.video-container {
+  height: fit-content;
+  position: absolute;
+  top: 10vh;
+  bottom: 0;
+  justify-content: center;
+  display: flex;
+}
+
+.fa {
+    font-size: 20px !important;
+}
+
+.header {
+  height: 10vh;
+}
+
+.header img{
+  height: 10vh;
+}
+
+#myVideo {
+    position: fixed;
+    top: 10vh;
+    left: 8px;
+    right: 0px;
+    bottom: 0;
+    width: 99%;
+    height: 89vh;
+    object-fit: fill;
+  }
+
+  .content {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+  }
+  
+  #videoTimer {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .button-container {
+    height: fit-content;
+    position: absolute;
+    bottom: 0;
+    justify-content: center;
+    display: flex;
   }

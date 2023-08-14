@@ -20,6 +20,9 @@ import { ViewDialogComponent } from './view-dialog/view-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { FilePondModule, registerPlugin } from 'ngx-filepond';
+import  * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+registerPlugin(FilePondPluginFileValidateType);
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatToolbarModule,
     MatDialogModule,
     ClipboardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FilePondModule
   ],
   providers: [AudioRecordingService,VideoRecordingService,
   {

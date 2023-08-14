@@ -31,7 +31,8 @@ export class WebcameraComponent implements OnInit, AfterViewInit {
   videoStream: MediaStream;
   audioConf = { audio: true}
   videoConf = { video: { facingMode:"user", width: 320 }, audio: true}
-
+  logo;
+  isLogo: boolean = false;
   constructor(
     private ref: ChangeDetectorRef,
     private audioRecordingService: AudioRecordingService,
@@ -85,6 +86,7 @@ export class WebcameraComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     // this.startCamera();
+    this.getLogo()
   }
 
   ngAfterViewInit(): void {
@@ -213,4 +215,21 @@ export class WebcameraComponent implements OnInit, AfterViewInit {
     // document.body.removeChild(anchor);
   }
   
+  getLogo(){
+    let linkId = localStorage.getItem('linkId');
+    this.generateService.getLogo(linkId).subscribe({
+      next:(res) => {
+        console.log(res);
+        if(!(res.logo == 'http://62.72.13.210:5001/undefined')){
+          this.logo = res.logo;
+          this.isLogo = true;
+        }
+        else {
+          this.logo = null;
+          this.isLogo =false;
+        }
+      }
+    })
+  }
+
 }
