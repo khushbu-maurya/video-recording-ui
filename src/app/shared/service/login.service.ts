@@ -14,6 +14,6 @@ export class LoginService {
   ) { }
 
   loginApi(formData: LoginPostModel): Observable<ILoginApiModel> {
-    return this.httpClient.post<ILoginApiModel>('/api/user/login',formData)
+    return this.httpClient.post<ILoginApiModel>('https://62.72.13.210:5001/api/user/login',formData)
   }
 }

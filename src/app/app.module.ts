@@ -22,6 +22,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { FilePondModule, registerPlugin } from 'ngx-filepond';
 import  * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+import { UpdateRecordComponent } from './update-record/update-record.component';
 registerPlugin(FilePondPluginFileValidateType);
 
 @NgModule({
@@ -31,7 +32,8 @@ registerPlugin(FilePondPluginFileValidateType);
     GenerateFormComponent,
     WebcameraComponent,
     VideoRecordsComponent,
-    ViewDialogComponent
+    ViewDialogComponent,
+    UpdateRecordComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,7 @@ registerPlugin(FilePondPluginFileValidateType);
     MatDialogModule,
     ClipboardModule,
     MatTooltipModule,
-    FilePondModule
+    FilePondModule,
   ],
   providers: [AudioRecordingService,VideoRecordingService,
   {

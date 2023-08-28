@@ -6,10 +6,17 @@ export interface IGetFilesApiModel {
 export interface IFileAPiModel {
         _id:  string;  
         email:  string;
-        file:   string;
+        files:  IFileLinkApiModel[];
         linkid: string;
         title:  string;
+        logo: string;
+        Invitelink: string;
         createdAt: string;
         updatedAt: string;
 
+}
+
+export interface IFileLinkApiModel {
+   file: string;
+   createAt: string;
 }

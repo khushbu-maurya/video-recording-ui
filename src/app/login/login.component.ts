@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         next: (res) => {
           localStorage.setItem('authToken', res.token);
           this.snackBar.open("Login Successfully!!!", 'X', { verticalPosition: 'top', horizontalPosition: 'end', duration: 3000 });
-          this.router.navigate(['/generate-link']);
+          this.router.navigate(['/view-records']);
         }, error: (err) => {
            if(err.status == 401){
             this.snackBar.open("Username or Password you entered is wrong!!!", 'X', { verticalPosition: 'top', horizontalPosition: 'end', duration: 3000 });

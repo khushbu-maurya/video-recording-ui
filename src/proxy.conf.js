@@ -4,7 +4,7 @@
             "/api",
             "/neomsense",
         ],
-        "target":   "http://62.72.13.210:5001/", // "https://iotsenseuat.oci.sense.neomos.online/",
+        "target":   "https://62.72.13.210:5001/", // "https://iotsenseuat.oci.sense.neomos.online/",
         "secure": false,
         "changeOrigin": true
     }];

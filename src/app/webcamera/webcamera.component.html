@@ -1,3 +1,15 @@
+<ng-container *ngIf="isVideoUploading;">
+  <div class="container-fluid">
+    <div  class="uploading-overlay">
+        <div class="uploading-message">
+            <p>Video Uploading, Please Wait...</p>
+            <span class="spinner-container">
+              <mat-spinner diameter="25" color="primary"></mat-spinner>
+            </span>
+        </div>
+    </div>
+  </div>
+</ng-container>
 <div class="row">
   <div class="d-flex header justify-content-center">
     <ng-container *ngIf="isLogo; else default">
@@ -8,17 +20,11 @@
     </ng-template>
   </div>
 </div>
-<!-- <div> -->
- 
-    <!-- <video #videoElement id="myVideo">
-      <source [src]="videoBlobUrl">
-    </video> -->
     <div class="d-flex video-container justify-content-center">
       <video #videoElement autoplay muted loop id="myVideo">
         <source [src]="videoBlobUrl">
       </video>
     </div>
-    
     <div class="d-flex button-ui justify-content-center">
             <div class="button-container">
               <button class="video-button record-time" *ngIf="this.isVideoRecording && !this.videoBlobUrl" >{{videoRecordedTime}}</button>
@@ -42,28 +48,3 @@
                 </button>
             </div>
     </div>
- 
-<!-- </div> -->
-<!-- <div class="container">
-    <video onclick="play(event)" src="https://res.cloudinary.com/codelife/video/upload/v1637805738/intro_l5ul1k.mp4" id="video"></video>
-    <div class="controls">
-        <button onclick="play(event)"><i class="fa fa-play"></i><i class="fa fa-pause"></i></button>
-        <button onclick="rewind(event)"><i class="fa fa-fast-backward"></i></button>
-        <div class="timeline">
-            <div class="bar">
-                <div class="inner"></div>
-            </div>
-        </div>
-        <button onclick="forward(event)"><i class="fa fa-fast-forward"></i></button>
-        <button onclick="fullScreen(event)"><i class="fa fa-expand"></i></button>
-        <button onclick="download(event)"><i class="fa fa-cloud-download"></i></button>
-    </div>
-</div>
-   -->
-    <!-- <button class="start-button" *ngIf="isVideoRecording && !videoBlobUrl">{{videoRecordedTime}}</button>
-          <button class="start-button" *ngIf="!isVideoRecording && !videoBlobUrl" (click)="startVideoRecording()">Start
-            Video Recording</button>
-          <button class="cancel-button" *ngIf="!isVideoRecording && videoBlobUrl"
-            (click)="clearVideoRecordedData()">Clear Video Recording</button>
-          <button class="stop-button" *ngIf="isVideoRecording && !videoBlobUrl" (click)="stopVideoRecording()">Stop
-            Video Recording</button> -->

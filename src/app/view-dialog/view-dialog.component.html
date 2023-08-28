@@ -9,27 +9,32 @@
 <div class="container-fluid mb-3">
     <div class="container">
         <div class="card">
-             <div class="card-body">
+             <div class="card-body overflow">
                 <section class="table-container mt-3" tabindex="0">
                     <table class="table table-striped">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Actions</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let record of viewRecordList;let i = index;">
+                          <tr *ngFor="let record of files; let i = index;">
                             <ng-container>
                               <td>
                                   {{i+1}}
                               </td>
                               <td>
-                                {{record.createdAt | date: 'dd-MM-YYYY'}}
+                                {{createdAt | date: 'dd-MM-YYYY'}}
                              </td>
                               <td>
-                                 <a (click)="downloadFile(record.file)">Download Video Recordings</a> 
+                                <a (click)="downloadFile(record.file)">Download Video Recording</a>
+                                <button>
+                                <a class="ml-2" (click)="playRecording(record.file)"> 
+                                Play Video Recording
+                                </a>
+                            </button>
                               </td>
                           </ng-container>
                           </tr>
@@ -37,8 +42,16 @@
                       </table>
                 </section>
              </div>
+             <div>
+             </div>
         </div>
     </div>
+    <div class="video-container">
+      <video width="400" *ngIf="currentVideoUrl" #videoElement id="myVideo" controls>
+        <source [src]="currentVideoUrl">
+      </video>
+    </div>
+    
 </div>
 
 

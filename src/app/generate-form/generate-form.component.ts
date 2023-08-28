@@ -100,7 +100,7 @@ export class GenerateFormComponent implements OnInit {
         this.snackBar.open("Something Went Wrong!!!", 'X', { verticalPosition: 'top', horizontalPosition: 'end', duration: 3000 });
       }
     })
-  }
+  }     
 
   onSendLink(): void {
     this.isLoading = true;

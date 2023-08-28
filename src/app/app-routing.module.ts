@@ -11,7 +11,7 @@ import { VideoRecordsComponent } from './video-records/video-records.component';
 
 const routes: Routes = [
   {
-    path:'', redirectTo:'generate-link', 
+    path:'', redirectTo:'view-records', 
     pathMatch: 'full'
   },
   {

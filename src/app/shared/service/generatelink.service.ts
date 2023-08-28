@@ -10,34 +10,37 @@ import { ILogoResModel } from '../model/logo-api-model';
   providedIn: 'root'
 })
 export class GeneratelinkService {
-
+  
+  baseUrl = 'https://62.72.13.210:5001/';
   constructor(
     private httpClient:HttpClient
   ) { }
-
+  
   generateLinkApi(postData: any): Observable<IGenerateLinkApiModel> {
-    return this.httpClient.post<IGenerateLinkApiModel>('/api/user/generatelink',postData)
+    return this.httpClient.post<IGenerateLinkApiModel>(`${this.baseUrl}api/user/generatelink`,postData)
   }
 
   uploadFIleApi(postData:any, id:string) {
-    return this.httpClient.post(`/api/user/upload/${id}`, postData);
+    return this.httpClient.post(`${this.baseUrl}api/user/upload/${id}`, postData);
   }
 
   getFilesApi() {
-    // return this.httpClient.get<IGetFilesApiModel[]>('https://f3a7-103-250-151-79.ngrok-free.app/api/user/getfile');
-    return this.httpClient.get<IGetFilesApiModel>('/api/user/getfile')
+    return this.httpClient.get<IGetFilesApiModel>(`${this.baseUrl}api/user/getfile`)
   }
 
   getRecordedFileApi(id:string) {
-     return this.httpClient.get<IGetFilesApiModel>(`/api/user/getfile?id=${id}`)
+     return this.httpClient.get<IGetFilesApiModel>(`${this.baseUrl}api/user/getfile?id=${id}`)
   }
 
   sendLinkApi(id:string) {
-    return this.httpClient.get(`/api/user/sendemail/${id}`)
+    return this.httpClient.get(`${this.baseUrl}api/user/sendemail/${id}`)
   }
 
   getLogo(id:string) {
-    return this.httpClient.get<ILogoResModel>(`api/user/logo/${id}`)
+    return this.httpClient.get<ILogoResModel>(`${this.baseUrl}api/user/logo/${id}`)
   }
-
+  
+  updateRecord(id:string, formdata:any) {
+    return this.httpClient.put(`${this.baseUrl}api/user/edittitle/${id}`, formdata)
+  }
 }

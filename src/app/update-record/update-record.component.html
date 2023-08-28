@@ -1,0 +1,44 @@
+<p>
+    <mat-toolbar>
+      <div class="w-100 d-flex justify-content-between">
+      <span>Update Recording</span>
+      <i class="bi bi-x close-btn pointer" (click)="onClose(false)"></i>
+    </div>
+    </mat-toolbar>
+</p>
+<div class="container-fluid mb-3 overflow">
+    <mat-dialog-content class="mat-typography scroller">
+        <form [formGroup]="updateRecordForm">
+            <div class="col-12">
+                <label>Title<span class="text-danger">*</span></label>
+                <div class="input-group">
+                  <div class="input-group">
+                    <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+                    <input type="text" class="form-control" id="title" formControlName="title"
+                      placeholder="Enter Title" autocomplete="off">
+                  </div>
+                  <!-- <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger">
+                    <div *ngIf="title.errors?.['required']">Title is required.</div>
+                  </div> -->
+                </div>
+              </div>
+             <div class="col-12 mt-3">
+                <file-pond id="file" formControlName="logo" class="pointer" multiple ngDefaultControl type="file" #myPond
+                [options]="pondOptions" (onaddfile)="onFileSelected($event)" (onremovefile)="onRemoveFile()">
+               </file-pond>
+               <div class="space-between" *ngIf="logoName">
+                {{logoName}}
+                <!-- <i class="bi bi-x close-btn pointer" (click)=""></i> -->
+            </div>
+             </div>
+             <button type="submit" class="btn btn-primary px-4 float-end d-flex btn-general"
+             [disabled]="loading" (click)="updateRecord()">
+             Update Record
+             <ng-container class="ml-2">
+               <mat-spinner *ngIf="loading" diameter="18">
+               </mat-spinner>
+             </ng-container>
+           </button>
+        </form>
+   </mat-dialog-content>
+</div>

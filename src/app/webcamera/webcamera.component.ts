@@ -33,6 +33,8 @@ export class WebcameraComponent implements OnInit, AfterViewInit {
   videoConf = { video: { facingMode:"user", width: 320 }, audio: true}
   logo;
   isLogo: boolean = false;
+  isVideoUploading: boolean = false;
+
   constructor(
     private ref: ChangeDetectorRef,
     private audioRecordingService: AudioRecordingService,
@@ -152,7 +154,7 @@ export class WebcameraComponent implements OnInit, AfterViewInit {
 
   downloadVideoRecordedData() {
     if(!this.isVideoRecording && this.videoBlobUrl){
-    const blob =   this._downloadFile(this.videoBlob, 'video/mp4', this.videoName);
+    const blob = this._downloadFile(this.videoBlob, 'video/mp4', this.videoName);
     this.uploadFile(blob)
     }
   }
@@ -161,9 +163,17 @@ export class WebcameraComponent implements OnInit, AfterViewInit {
     const formData=  new FormData();
     formData.append('file', blobFile, this.videoName); 
     let linkId = localStorage.getItem('linkId');
+    this.isVideoUploading = true;
     this.generateService.uploadFIleApi(formData, linkId).pipe(take(1)).subscribe({
       next:(res) => {
-         console.log(res);
+        this.isVideoUploading = false;
+         this.ref.detectChanges();
+         this.snackBar.open("Video Saved Successfully!!!", 'X', { verticalPosition: 'top', horizontalPosition: 'end', duration: 3000 }); 
+      },
+      error:(err) => {
+        this.isVideoUploading = false;
+        this.ref.detectChanges();
+        this.snackBar.open("Something Went Wrong!!!", 'X', { verticalPosition: 'top', horizontalPosition: 'end', duration: 3000 });
       }
     })
   }
@@ -220,7 +230,7 @@ export class WebcameraComponent implements OnInit, AfterViewInit {
     this.generateService.getLogo(linkId).subscribe({
       next:(res) => {
         console.log(res);
-        if(!(res.logo == 'http://62.72.13.210:5001/undefined')){
+        if(!(res.logo == 'https://62.72.13.210:5001/undefined')){
           this.logo = res.logo;
           this.isLogo = true;
         }
